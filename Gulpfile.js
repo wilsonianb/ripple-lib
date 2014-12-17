@@ -7,6 +7,8 @@ var jshint = require('gulp-jshint');
 var map = require('map-stream');
 var bump = require('gulp-bump');
 var argv = require('yargs').argv;
+var insert = require('gulp-insert');
+var closureCompiler = require('gulp-closure-compiler');
 //var header = require('gulp-header');
 
 var pkg = require('./package.json');
@@ -71,6 +73,15 @@ gulp.task('build', [ 'concat-sjcl' ], function(callback) {
 gulp.task('build-min', [ 'build' ], function(callback) {
   return gulp.src([ './build/ripple-', '.js' ].join(pkg.version))
   .pipe(uglify())
+  .pipe(insert.append('window["ripple"] = ripple;'))
+  .pipe(closureCompiler({
+    compilerPath: 'node_modules/closurecompiler/compiler/compiler.jar',
+    fileName: './build/closure.js',
+    compilerFlags: {
+      compilation_level: 'ADVANCED_OPTIMIZATIONS',
+      warning_level: 'QUIET'
+    }
+  }))
   .pipe(rename([ 'ripple-', '-min.js' ].join(pkg.version)))
   .pipe(gulp.dest('./build/'));
 });
