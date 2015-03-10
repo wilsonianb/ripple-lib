@@ -274,11 +274,12 @@ util.inherits(Remote, EventEmitter);
 Remote.flags = {
   // Account Root
   account_root: {
-    PasswordSpent:   0x00010000, // True, if password set fee is spent.
-    RequireDestTag:  0x00020000, // True, to require a DestinationTag for payments.
-    RequireAuth:     0x00040000, // True, to require a authorization to hold IOUs.
-    DisallowXRP:     0x00080000, // True, to disallow sending XRP.
-    DisableMaster:   0x00100000  // True, force regular key.
+    PasswordSpent: 0x00010000, // password set fee is spent
+    RequireDestTag: 0x00020000, // require a DestinationTag for payments
+    RequireAuth: 0x00040000, // require a authorization to hold IOUs
+    DisallowXRP: 0x00080000, // disallow sending XRP
+    DisableMaster: 0x00100000,  // force regular key
+    DefaultRipple: 0x00800000
   },
 
   // Offer

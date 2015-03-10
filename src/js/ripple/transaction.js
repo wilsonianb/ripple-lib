@@ -132,7 +132,8 @@ Transaction.set_clear_flags = {
     asfDisallowXRP:    3,
     asfDisableMaster:  4,
     asfNoFreeze:       6,
-    asfGlobalFreeze:   7
+    asfGlobalFreeze:   7,
+    asfDefaultRipple:  8
   }
 };
 
