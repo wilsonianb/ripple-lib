@@ -81,8 +81,7 @@ function Transaction(remote) {
 
 util.inherits(Transaction, EventEmitter);
 
-// This is currently a constant in rippled known as the "base reference"
-// https://wiki.ripple.com/Transaction_Fee#Base_Fees
+// XXX This needs to be determined from the network.
 Transaction.fee_units = {
   default: 10
 };
